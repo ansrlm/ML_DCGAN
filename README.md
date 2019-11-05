@@ -34,7 +34,7 @@ brief organization about dcgan
 #### loss function of DCGAN  
 ##### discriminator와 generator loss는 GAN에서 계산하는 방식과 약간 다르게 CEE(교차 엔트로피 에러)를 통해서 작동합니다.  
 ##### 1. discriminator : sigmoid_cross_entropy_with_logits(이하 CEE)를 이용하는데, discriminator가 sample x에 대해서 진짜로 판명한 것의 CEE와 generator가 만들어낸 z에 대해서 가짜로 판명한 것의 CEE를 합한 값이 되게 됩니다.  
-##### 2. generator : generator가 만들어낸 z에 대해서 discriminator가 진짜로 판명한 것의 CEE를 합한 값이 되게 됩니다.  
+##### 2. generator : generator가 만들어낸 z에 대해서 discriminator가 진짜로 판명한 것의 CEE가 되게 됩니다.  
 ---
 #### additional benefits from DCGAN  
 ![dcgan_image4](./dcgan_image/dcgan_image4.JPG)  
