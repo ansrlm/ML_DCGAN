@@ -31,6 +31,11 @@ brief organization about dcgan
 ![dcgan_image3](./dcgan_image/dcgan_image3.JPG)  
 ##### generator의 경우 앞서 말한것처럼 fractionally-strided convolution layer을 통해 이미지와 같은 사이즈의 output을 산출하게 됩니다. 첫 convolution의 경우 noise에 해당하는 것을 통해 단계를 거치기 때문에 strides가 없습니다. 또한 discriminator의 경우 이 행위의 역순과정을 통해서 p(X)를 구하게 되고, 이를 비교하게 됩니다. 각 단계는 generator의 convolution_transpose의 method를 역순으로 실행하는 것이 일반적입니다.  
 ---
+#### loss function of DCGAN  
+##### discriminator와 generator loss는 GAN에서 계산하는 방식과 약간 다르게 CEE(교차 엔트로피 에러)를 통해서 작동합니다.  
+##### 1. discriminator : sigmoid_cross_entropy_with_logits(이하 CEE)를 이용하는데, discriminator가 sample x에 대해서 진짜로 판명한 것의 CEE와 generator가 만들어낸 z에 대해서 가짜로 판명한 것의 CEE를 합한 값이 되게 됩니다.  
+##### 2. generator : generator가 만들어낸 z에 대해서 discriminator가 진짜로 판명한 것의 CEE를 합한 값이 되게 됩니다.  
+---
 #### additional benefits from DCGAN  
 ![dcgan_image4](./dcgan_image/dcgan_image4.JPG)  
 ##### CNN filters를 통해서 구현된 DCGAN은 위 사진과 같은 arithmetic operation이 가능했습니다. 학습을 통해 얻어진 z값들을 이용한 vector 계산을 통해서 특징들을 빼거나 더할 수 있는 결과를 보였습니다. GAN의 black-box method가 아닌, 설명가능한 딥러닝으로 한층 의미있는 값들을 얻어낸다고 볼 수 있습니다.  
