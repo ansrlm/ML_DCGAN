@@ -27,7 +27,7 @@ brief organization about dcgan
 ##### 5. use LeakyReLU activation in the discriminator for all layers.  
 ##### regular ReLU와 달리, LeakyReLU를 사용함으로써 작은 gradient값을 보낼 수 있습니다. 이 결과로 discriminator의 back propagation에 있어서 음수값이 0으로 gradient가 전송되는 것이 아니라, 작은 음수값을 보내게 됩니다.  
 ---
-#### DCGAN generator used for LSUN scene modeling  
+#### DCGAN architecture (generator and discriminator)  
 ![dcgan_image3](./dcgan_image/dcgan_image3.JPG)  
 ##### generator의 경우 앞서 말한것처럼 fractionally-strided convolution layer을 통해 이미지와 같은 사이즈의 output을 산출하게 됩니다. 첫 convolution의 경우 noise에 해당하는 것을 통해 단계를 거치기 때문에 strides가 없습니다. 또한 discriminator의 경우 이 행위의 역순과정을 통해서 p(X)를 구하게 되고, 이를 비교하게 됩니다. 각 단계는 generator의 convolution_transpose의 method를 역순으로 실행하는 것이 일반적입니다.  
 ---
